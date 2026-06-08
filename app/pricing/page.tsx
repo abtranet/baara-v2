@@ -18,16 +18,16 @@ export default function PricingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-blue-700 text-white py-20">
+      <section className="bg-stone-50 border-b border-stone-200 py-16">
         <Container>
           <div className="text-center max-w-2xl mx-auto">
-            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-3">
+            <span className="inline-block text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
               Pricing
             </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4">
               Simple AI Automation Pricing
             </h1>
-            <p className="text-blue-100 text-lg">
+            <p className="text-stone-600 text-lg">
               No long-term contracts. Start with one workflow and build from there.
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing cards */}
-      <section className="section-padding bg-indigo-50">
+      <section className="section-padding bg-white">
         <Container>
           <div className="grid md:grid-cols-3 gap-8 items-start">
             {pricingTiers.map((tier) => (
@@ -47,14 +47,14 @@ export default function PricingPage() {
               />
             ))}
           </div>
-          <p className="text-xs text-slate-400 mt-8 text-center max-w-2xl mx-auto">
+          <p className="text-xs text-stone-400 mt-8 text-center max-w-2xl mx-auto">
             Final scope depends on tools, data, workflow complexity, and business needs. No guaranteed revenue outcome. Sensitive data requires additional review.
           </p>
         </Container>
       </section>
 
       {/* FAQ */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-stone-50">
         <Container narrow>
           <SectionHeader eyebrow="FAQ" title="Pricing questions answered" />
           <FAQ items={pricingFaqs} />

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
 import LeadForm from "@/components/LeadForm";
-import SectionHeader from "@/components/SectionHeader";
+import PillHeader from "@/components/PillHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
 
@@ -26,8 +25,8 @@ const roadmapCovers = [
 export default function HealthcareITRoadmapPage() {
   return (
     <>
-      <section className="bg-blue-700 text-white py-20">
-        <Container>
+      <section className="bg-blue-900 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
@@ -35,47 +34,54 @@ export default function HealthcareITRoadmapPage() {
               { label: "Free Career Roadmap" },
             ]}
           />
-          <div className="text-center max-w-2xl mx-auto mt-6">
-            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
+          <div className="flex justify-center mb-8">
+            <span className="bg-pink-500 text-white font-extrabold text-2xl px-10 py-4 rounded-full shadow-lg">
               Free Download
             </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
+          </div>
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5">
               Free Healthcare IT Career Roadmap
               <br />
-              <span className="text-cyan-400">for African Professionals</span>
+              <span className="text-orange-400">for African Professionals</span>
             </h1>
-            <p className="text-blue-100 text-lg leading-relaxed">
+            <p className="text-blue-200 text-lg leading-relaxed">
               Understand healthcare IT roles, EHR support pathways, interoperability basics, AI productivity, and how to position your existing experience.
             </p>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <section className="section-padding bg-white">
-        <Container>
+      <section className="bg-sky-100 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
-              <SectionHeader eyebrow="What You Will Get" title="Inside the free roadmap" />
+              <PillHeader bg="bg-blue-900" text="text-white" size="md">
+                📋 What You Will Get
+              </PillHeader>
               <div className="grid sm:grid-cols-2 gap-4">
                 {roadmapCovers.map((item) => (
-                  <div key={item.text} className="bg-indigo-50 rounded-xl p-4 flex items-start gap-3 border border-blue-100">
+                  <div key={item.text} className="bg-white rounded-2xl p-4 flex items-start gap-3 shadow-sm">
                     <span className="text-xl flex-shrink-0">{item.icon}</span>
                     <span className="text-slate-700 text-sm">{item.text}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-5 bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <div className="mt-5 bg-amber-50 border border-amber-200 rounded-2xl p-4">
                 <p className="text-amber-900 text-sm">
                   The roadmap is free. No purchase required. It is a starting point — not a job guarantee. Employment depends on your background, location, work authorization, and effort.
                 </p>
               </div>
             </div>
-            <div className="bg-indigo-50 rounded-xl p-8 border border-blue-100">
-              <SectionHeader eyebrow="Get the Free Roadmap" title="Download now — it's free" />
+            <div className="bg-white rounded-3xl p-8 shadow-sm">
+              <PillHeader bg="bg-orange-500" text="text-white" size="sm">
+                🗺️ Get the Free Roadmap
+              </PillHeader>
+              {/* TODO: Wire up to ConvertKit, MailerLite, Resend, Airtable, or Tally */}
               <LeadForm type="roadmap" showCountry showBackground showLanguage />
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );

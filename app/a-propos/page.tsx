@@ -26,16 +26,16 @@ const values = [
 export default function AProposPage() {
   return (
     <>
-      <section className="bg-blue-700 text-white py-20">
+      <section className="bg-stone-900 text-white py-20">
         <Container>
           <div className="max-w-2xl">
-            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
-              About / &Agrave; Propos
+            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+              About / À Propos
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               About Baara
             </h1>
-            <p className="text-blue-100 text-xl leading-relaxed">
+            <p className="text-stone-300 text-xl leading-relaxed">
               <em>Baara</em> means &ldquo;work&rdquo; in Bambara. It is a word that carries weight — the dignity of effort, the value of skill, and the power of building something that lasts.
             </p>
           </div>
@@ -48,13 +48,13 @@ export default function AProposPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <SectionHeader eyebrow="Mission" title="Why Baara exists" />
-              <p className="text-slate-600 text-lg leading-relaxed">
+              <p className="text-stone-600 text-lg leading-relaxed">
                 Baara helps African entrepreneurs, professionals, and communities use practical AI automation and digital skills to create better work, better systems, and better opportunities.
               </p>
             </div>
             <div>
               <SectionHeader eyebrow="Vision" title="Where Baara is going" />
-              <p className="text-slate-600 text-lg leading-relaxed">
+              <p className="text-stone-600 text-lg leading-relaxed">
                 To become a trusted bilingual platform for AI automation, digital skills, and career-focused learning for African talent and African-led businesses.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function AProposPage() {
       </section>
 
       {/* Founder */}
-      <section className="section-padding bg-indigo-50">
+      <section className="section-padding bg-stone-50">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -82,8 +82,8 @@ export default function AProposPage() {
                   Baara is the answer to both.
                 </p>
               </div>
-              <p className="text-slate-500 text-sm mt-4">
-                Baara is connected to <strong className="text-slate-700">GlobalSABT</strong>, a services and training initiative supporting African professionals and business owners.
+              <p className="text-stone-500 text-sm mt-4">
+                Baara is connected to <strong className="text-stone-700">GlobalSABT</strong>, a services and training initiative supporting African professionals and business owners.
               </p>
             </div>
             <div>
@@ -97,8 +97,8 @@ export default function AProposPage() {
                   "We do not use employer-owned materials, PHI, or confidential client data in any program.",
                 ].map((item) => (
                   <li key={item} className="flex gap-3 items-start">
-                    <span className="text-blue-400 mt-0.5 font-bold">&bull;</span>
-                    <span className="text-slate-600 text-sm">{item}</span>
+                    <span className="text-stone-400 mt-0.5 font-bold">•</span>
+                    <span className="text-stone-600 text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -113,9 +113,9 @@ export default function AProposPage() {
           <SectionHeader eyebrow="Values" title="What guides everything Baara does" center />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="bg-indigo-50 border border-blue-100 rounded-xl p-5">
-                <h3 className="font-bold text-slate-900 mb-2">{v.title}</h3>
-                <p className="text-slate-600 text-sm">{v.description}</p>
+              <div key={v.title} className="bg-stone-50 border border-stone-200 rounded-xl p-5">
+                <h3 className="font-bold text-stone-900 mb-2">{v.title}</h3>
+                <p className="text-stone-600 text-sm">{v.description}</p>
               </div>
             ))}
           </div>
@@ -123,15 +123,15 @@ export default function AProposPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-blue-700 py-16">
+      <section className="section-padding bg-amber-50 border-y border-amber-100">
         <Container narrow>
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-white mb-6">Ready to work with Baara?</h2>
+            <h2 className="text-2xl font-bold text-stone-900 mb-4">Ready to work with Baara?</h2>
             <div className="flex flex-wrap gap-4 justify-center">
-              <CTAButton href="/contact" variant="secondary">
+              <CTAButton href="/contact" variant="primary">
                 Book a Free Audit
               </CTAButton>
-              <CTAButton href="/academy" variant="ghost">
+              <CTAButton href="/academy" variant="outline">
                 Explore Baara Academy
               </CTAButton>
             </div>

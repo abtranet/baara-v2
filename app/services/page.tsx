@@ -22,19 +22,19 @@ export default function ServicesPage() {
       <JsonLd schema={serviceSchema("AI Automation Services", "Practical AI automation workflows for small businesses and African entrepreneurs.")} />
 
       {/* Hero */}
-      <section className="bg-blue-700 text-white py-20">
+      <section className="bg-stone-900 text-white py-20">
         <Container>
           <div className="max-w-2xl">
-            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
+            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
               AI Automation Services
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               AI Automation Services That Turn Manual Work Into Simple Systems
             </h1>
-            <p className="text-blue-100 text-lg leading-relaxed mb-8">
+            <p className="text-stone-300 text-lg leading-relaxed mb-8">
               Baara helps small businesses, entrepreneurs, and African-led organizations automate follow-up, customer communication, operations, reporting, and repetitive workflows.
             </p>
-            <CTAButton href="/contact" variant="secondary" size="lg">
+            <CTAButton href="/contact" variant="primary" size="lg">
               Book a Free Audit
             </CTAButton>
           </div>
@@ -42,7 +42,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services */}
-      <section className="section-padding bg-indigo-50">
+      <section className="section-padding bg-stone-50">
         <Container>
           <SectionHeader
             eyebrow="What Baara Builds"
@@ -69,7 +69,7 @@ export default function ServicesPage() {
             {toolEcosystem.map((tool) => (
               <span
                 key={tool}
-                className="bg-indigo-50 text-blue-700 border border-blue-200 text-sm font-medium px-4 py-2 rounded-full"
+                className="bg-stone-100 text-stone-700 border border-stone-200 text-sm font-medium px-4 py-2 rounded-full"
               >
                 {tool}
               </span>

@@ -55,19 +55,19 @@ export default function OnboardingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-blue-700 text-white py-20">
+      <section className="bg-stone-900 text-white py-20">
         <Container>
           <div className="max-w-2xl">
-            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
+            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Getting Started
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               Start With a Simple AI Automation Roadmap
             </h1>
-            <p className="text-blue-100 text-lg leading-relaxed mb-8">
+            <p className="text-stone-300 text-lg leading-relaxed mb-8">
               Working with Baara starts with a free audit and ends with a system that runs without you. Here is what to expect.
             </p>
-            <CTAButton href="/contact" variant="secondary" size="lg">
+            <CTAButton href="/contact" variant="primary" size="lg">
               Book Your Free Audit
             </CTAButton>
           </div>
@@ -84,12 +84,12 @@ export default function OnboardingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((step) => (
               <div key={step.number} className="flex gap-5">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-extrabold text-sm flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 text-amber-700 font-extrabold text-sm flex items-center justify-center">
                   {step.number}
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-2">{step.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
+                  <h3 className="font-bold text-stone-900 mb-2">{step.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -97,8 +97,8 @@ export default function OnboardingPage() {
         </Container>
       </section>
 
-      {/* Timelines */}
-      <section className="section-padding bg-indigo-50">
+      {/* What to expect */}
+      <section className="section-padding bg-stone-50">
         <Container narrow>
           <SectionHeader
             eyebrow="What to Expect"
@@ -111,9 +111,9 @@ export default function OnboardingPage() {
               { label: "Growth plan setup", value: "2–4 weeks" },
               { label: "Scale project", value: "By scope" },
             ].map((item) => (
-              <div key={item.label} className="bg-white border border-blue-100 rounded-xl p-6">
-                <div className="text-2xl font-extrabold text-blue-700 mb-1">{item.value}</div>
-                <div className="text-slate-600 text-sm">{item.label}</div>
+              <div key={item.label} className="bg-white border border-stone-200 rounded-xl p-6">
+                <div className="text-2xl font-extrabold text-amber-600 mb-1">{item.value}</div>
+                <div className="text-stone-600 text-sm">{item.label}</div>
               </div>
             ))}
           </div>
