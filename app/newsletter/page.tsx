@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
 import LeadForm from "@/components/LeadForm";
+import PillHeader from "@/components/PillHeader";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -11,64 +11,61 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const whatToExpect = [
-  "Weekly AI news from Africa and the diaspora",
-  "Practical automation tips and workflow ideas",
-  "Baara Academy updates and early access to programs",
-  "Healthcare IT career resources and job market insights",
-  "African digital economy stories worth knowing",
-  "Tool recommendations and how-to guides",
+  { icon: "🌍", text: "Weekly AI news from Africa and the diaspora" },
+  { icon: "⚙️", text: "Practical automation tips and workflow ideas" },
+  { icon: "🎓", text: "Baara Academy updates and early program access" },
+  { icon: "🏥", text: "Healthcare IT career resources and job market insights" },
+  { icon: "📊", text: "African digital economy stories worth knowing" },
+  { icon: "🔧", text: "Tool recommendations and how-to guides" },
 ];
 
 export default function NewsletterPage() {
   return (
     <>
-      <section className="bg-stone-900 text-white py-20">
-        <Container>
-          <div className="max-w-2xl">
-            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+      <section className="bg-blue-900 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex justify-center mb-8">
+            <span className="bg-orange-500 text-white font-extrabold text-2xl px-10 py-4 rounded-full shadow-lg">
               Newsletter
             </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
-              Subscribe to the Baara Newsletter
-            </h1>
-            <p className="text-stone-300 text-lg leading-relaxed">
-              Practical AI news, automation tips, Academy updates, and career resources — delivered weekly in English and French.
-            </p>
           </div>
-        </Container>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+            Subscribe to the Baara Newsletter
+          </h1>
+          <p className="text-blue-200 text-lg max-w-xl mx-auto">
+            Practical AI news, automation tips, Academy updates, and career resources — weekly, in English and French.
+          </p>
+        </div>
       </section>
 
-      <section className="section-padding bg-white">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <section className="bg-sky-100 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
-              <h2 className="text-2xl font-bold text-stone-900 mb-6">What you will get each week</h2>
-              <ul className="space-y-4">
+              <PillHeader bg="bg-blue-900" text="text-white" size="md">
+                📬 What You Will Get
+              </PillHeader>
+              <div className="grid sm:grid-cols-2 gap-4">
                 {whatToExpect.map((item) => (
-                  <li key={item} className="flex gap-3 items-start">
-                    <span className="text-amber-600 font-bold mt-0.5">✓</span>
-                    <span className="text-stone-700">{item}</span>
-                  </li>
+                  <div key={item.text} className="bg-white rounded-2xl p-5 flex items-start gap-3 shadow-sm">
+                    <span className="text-xl flex-shrink-0">{item.icon}</span>
+                    <span className="text-slate-700 text-sm">{item.text}</span>
+                  </div>
                 ))}
-              </ul>
-              <div className="mt-8 bg-stone-50 border border-stone-200 rounded-xl p-5">
-                <p className="text-stone-500 text-sm">
-                  No spam. No daily emails. Unsubscribe any time. The newsletter is free.
-                </p>
               </div>
+              <p className="mt-6 text-slate-500 text-sm bg-white rounded-2xl p-4 shadow-sm">
+                No spam. No daily emails. Unsubscribe any time. Free.
+              </p>
             </div>
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm">
+              <PillHeader bg="bg-orange-500" text="text-white" size="sm">
+                ✉️ Subscribe for Free
+              </PillHeader>
               {/* TODO: Wire up to MailerLite, ConvertKit, Resend, or Airtable */}
-              {/* Currently uses a local mock success state */}
-              <LeadForm
-                type="newsletter"
-                title="Subscribe for free"
-                showCountry
-                showLanguage
-              />
+              <LeadForm type="newsletter" showCountry showLanguage />
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );

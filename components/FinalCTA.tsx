@@ -1,4 +1,3 @@
-import Container from "./Container";
 import CTAButton from "./CTAButton";
 
 interface FinalCTAProps {
@@ -8,36 +7,36 @@ interface FinalCTAProps {
   primaryHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  bg?: string;
 }
 
 export default function FinalCTA({
-  title = "Ready to build smarter systems?",
-  subtitle = "Book a free AI automation audit or explore Baara Academy to see what's possible for your business or career.",
+  title = "Ready to build better work with AI and practical digital skills?",
+  subtitle = "Book a free AI automation audit or join the Baara Academy waitlist.",
   primaryLabel = "Book a Free AI Audit",
   primaryHref = "/contact",
-  secondaryLabel = "Explore Baara Academy",
-  secondaryHref = "/academy",
+  secondaryLabel = "Join Baara Academy Waitlist",
+  secondaryHref = "/academy/healthcare-it-career-launch",
+  bg = "bg-orange-500",
 }: FinalCTAProps) {
   return (
-    <section className="bg-stone-900 py-20 mt-20">
-      <Container>
+    <section className={`${bg} py-20`}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{title}</h2>
-          <p className="text-stone-300 text-lg mb-8 leading-relaxed">{subtitle}</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
+            {title}
+          </h2>
+          <p className="text-orange-100 text-lg mb-8 leading-relaxed">{subtitle}</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <CTAButton href={primaryHref} variant="primary" size="lg">
+            <CTAButton href={primaryHref} variant="white" size="lg">
               {primaryLabel}
             </CTAButton>
-            <CTAButton
-              href={secondaryHref}
-              size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-colors font-semibold rounded-lg inline-flex items-center justify-center"
-            >
+            <CTAButton href={secondaryHref} variant="ghost" size="lg">
               {secondaryLabel}
             </CTAButton>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

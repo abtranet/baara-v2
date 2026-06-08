@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import JsonLd from "@/components/JsonLd";
-import ProgramCurriculum from "@/components/ProgramCurriculum";
-import SectionHeader from "@/components/SectionHeader";
+import PillHeader from "@/components/PillHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
 import { courseSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
@@ -19,17 +17,6 @@ export const metadata: Metadata = buildMetadata({
   path: "/academy/healthcare-it-career-launch",
 });
 
-const outcomes = [
-  "Healthcare IT career roadmap",
-  "Sample workflow diagram",
-  "Ticket documentation portfolio",
-  "Basic HL7/FHIR concept map",
-  "Healthcare IT resume",
-  "LinkedIn profile improvements",
-  "Interview practice stories",
-  "Capstone project",
-];
-
 const whoFor = [
   "African and diaspora professionals considering healthcare IT",
   "Healthcare workers wanting to move into IT or support roles",
@@ -37,6 +24,17 @@ const whoFor = [
   "Career changers from admin, operations, or customer service",
   "Bilingual professionals who want to serve diverse healthcare settings",
   "Recent graduates exploring healthcare technology careers",
+];
+
+const outcomes = [
+  { icon: "🗺️", label: "Healthcare IT career roadmap" },
+  { icon: "📊", label: "Sample workflow diagram" },
+  { icon: "🎫", label: "Ticket documentation portfolio" },
+  { icon: "🔗", label: "Basic HL7/FHIR concept map" },
+  { icon: "📄", label: "Healthcare IT resume" },
+  { icon: "💼", label: "LinkedIn profile improvements" },
+  { icon: "🎤", label: "Interview practice stories" },
+  { icon: "🎓", label: "Capstone project" },
 ];
 
 export default function HealthcareITCareerLaunchPage() {
@@ -59,9 +57,9 @@ export default function HealthcareITCareerLaunchPage() {
         ]}
       />
 
-      {/* Hero */}
-      <section className="bg-stone-900 text-white py-20">
-        <Container>
+      {/* ═══ HERO ═══ */}
+      <section className="bg-blue-900 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
@@ -69,148 +67,217 @@ export default function HealthcareITCareerLaunchPage() {
               { label: "Healthcare IT Career Launch" },
             ]}
           />
-          <div className="max-w-3xl">
-            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
-              Baara Academy · First Cohort
+          <div className="flex justify-center mb-8">
+            <span className="bg-pink-500 text-white font-extrabold text-xl px-8 py-3.5 rounded-full shadow-lg">
+              Baara Academy &middot; First Cohort
             </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
-              Healthcare IT Career Launch Program for African Professionals
+          </div>
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5 leading-tight">
+              Healthcare IT Career Launch Program
+              <br />
+              <span className="text-orange-400">for African Professionals</span>
             </h1>
-            <p className="text-stone-300 text-xl leading-relaxed mb-4">
-              A practical 8-week online cohort for African and diaspora career changers who want to understand healthcare IT, EHR workflows, clinical application support, ticketing, HL7/FHIR basics, AI productivity, and job-search strategy.
+            <p className="text-blue-200 text-lg leading-relaxed mb-8">
+              A practical 8-week online cohort for African and diaspora career-changers who want to understand healthcare IT, EHR workflows, clinical application support, ticketing, HL7/FHIR basics, AI productivity, and job-search strategy.
             </p>
-            <div className="bg-amber-900/30 border border-amber-700/40 rounded-xl p-4 mb-8">
-              <p className="text-amber-200 text-sm">
-                <strong>Vendor-neutral disclaimer:</strong> Baara Academy does not provide official Epic, Oracle Health, Varian, Elekta, ARIA, MOSAIQ, or other vendor certifications. We teach practical concepts, workflows, documentation, AI productivity, and career readiness using original materials and synthetic examples.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <CTAButton href="/academy/healthcare-it-roadmap" variant="primary" size="lg">
                 Join the Waitlist
               </CTAButton>
-              <CTAButton
-                href="/academy/healthcare-it-roadmap"
-                size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-colors font-semibold rounded-lg inline-flex items-center justify-center px-8 py-4 text-lg"
-              >
-                Download Free Career Roadmap
+              <CTAButton href="/academy/healthcare-it-roadmap" variant="ghost" size="lg">
+                Download Free Roadmap
               </CTAButton>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Who this is for */}
-      <section className="section-padding bg-white">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <SectionHeader eyebrow="Who This Is For" title="You belong in this cohort if..." />
-              <ul className="space-y-3">
-                {whoFor.map((item) => (
-                  <li key={item} className="flex gap-3 items-start">
-                    <span className="text-amber-600 font-bold mt-0.5">✓</span>
-                    <span className="text-stone-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <SectionHeader eyebrow="Why Healthcare IT" title="A growing field with real opportunity" />
-              <div className="prose-brand">
-                <p>
-                  Healthcare IT is one of the most stable and growing sectors in the US job market. EHR implementation, clinical application support, and interoperability roles are in demand — and many do not require a clinical background.
-                </p>
-                <p>
-                  For African and diaspora professionals, healthcare IT offers a path that combines existing skills in IT, operations, healthcare, or admin with new technical and workflow knowledge.
-                </p>
-                <p>
-                  This program does not guarantee employment. But it gives you the practical foundation, portfolio, and career preparation to compete for entry-level and transitional healthcare IT roles.
-                </p>
-              </div>
-            </div>
+      {/* ═══ VENDOR-NEUTRAL DISCLAIMER ═══ */}
+      <section className="bg-amber-50 py-10 border-y border-amber-200">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-start gap-4 max-w-3xl mx-auto">
+            <span className="text-2xl flex-shrink-0">⚖️</span>
+            <p className="text-amber-900 text-sm leading-relaxed">
+              <strong>Vendor-neutral disclaimer:</strong> Baara Academy does not provide official Epic, Oracle Health, Varian, Elekta, ARIA, MOSAIQ, or other vendor certifications. We teach practical concepts, workflows, documentation, AI productivity, and career readiness using original materials, simulated workflows, and synthetic examples. No job guarantee. Results depend on individual effort, background, location, work authorization, and market conditions.
+            </p>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Curriculum */}
-      <section className="section-padding bg-stone-50">
-        <Container>
-          <SectionHeader
-            eyebrow="8-Week Curriculum"
-            title="What you will learn, week by week"
-            subtitle="Live sessions, recordings, worksheets, portfolio assignments, and community support throughout."
-          />
-          <ProgramCurriculum weeks={curriculum} />
-          <div className="mt-6 p-4 bg-stone-100 rounded-xl text-sm text-stone-500">
-            Format: 8 weeks · Live online sessions · Recordings provided · 3–5 hours/week
-          </div>
-        </Container>
-      </section>
-
-      {/* What you will build */}
-      <section className="section-padding bg-white">
-        <Container narrow>
-          <SectionHeader
-            eyebrow="Portfolio Outcomes"
-            title="What you will build by graduation"
-            center
-          />
-          <div className="grid sm:grid-cols-2 gap-4">
-            {outcomes.map((outcome) => (
-              <div
-                key={outcome}
-                className="flex gap-3 items-center bg-amber-50 border border-amber-100 rounded-xl px-5 py-4"
-              >
-                <span className="text-amber-600 font-bold">✓</span>
-                <span className="text-stone-800 font-medium text-sm">{outcome}</span>
+      {/* ═══ WHO THIS IS FOR ═══ */}
+      <section className="bg-sky-100 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
+            🎯 Who This Is For
+          </PillHeader>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto mt-4">
+            {whoFor.map((item) => (
+              <div key={item} className="bg-white rounded-2xl px-5 py-4 flex items-start gap-3 shadow-sm">
+                <span className="text-orange-500 font-bold mt-0.5 flex-shrink-0">✓</span>
+                <span className="text-slate-800 text-sm font-medium">{item}</span>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Founder credibility */}
-      <section className="section-padding bg-stone-50">
-        <Container narrow>
-          <div className="text-center">
-            <span className="inline-block text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">Instructor</span>
-            <h2 className="text-2xl font-bold text-stone-900 mb-4">Taught by a healthcare IT practitioner</h2>
-            <p className="text-stone-600 leading-relaxed mb-3">
-              {site.founder.name} is a {site.founder.bio}
+      {/* ═══ WHAT YOU WILL LEARN ═══ */}
+      <section className="bg-orange-50 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <PillHeader bg="bg-teal-700" text="text-white" size="md" center>
+            📖 What You Will Learn
+          </PillHeader>
+          <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto mt-4">
+            {[
+              { icon: "🏥", topic: "Healthcare IT career paths and the digital health landscape" },
+              { icon: "💻", topic: "EHR workflows and clinical application support roles" },
+              { icon: "🎫", topic: "Ticket management, incidents, service requests, and change control" },
+              { icon: "🔗", topic: "HL7, FHIR, ADT, orders, results, charges, and data exchange" },
+              { icon: "🤖", topic: "AI productivity and safe automation for healthcare workflows" },
+              { icon: "📋", topic: "Workflow documentation and portfolio-building techniques" },
+              { icon: "📝", topic: "Resume writing, LinkedIn optimization, and job-search strategy" },
+              { icon: "🎓", topic: "Capstone project and individual career roadmap" },
+            ].map((item) => (
+              <div key={item.topic} className="bg-white rounded-2xl px-6 py-4 flex items-start gap-4 shadow-sm">
+                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <span className="text-slate-800 text-sm leading-relaxed">{item.topic}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 8-WEEK SCHEDULE ═══ */}
+      <section className="bg-teal-700 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
+            📅 8-Week Schedule
+          </PillHeader>
+          <p className="text-center text-teal-100 mb-8">
+            Live sessions &middot; Recordings &middot; Worksheets &middot; Portfolio assignments &middot; 3–5 hours/week
+          </p>
+
+          {/* Desktop */}
+          <div className="hidden md:block overflow-hidden rounded-3xl bg-white shadow-sm">
+            <table className="w-full text-sm" role="table" aria-label="8-week program curriculum">
+              <thead>
+                <tr className="bg-blue-900 text-white">
+                  <th scope="col" className="text-left px-6 py-4 font-bold w-24">Week</th>
+                  <th scope="col" className="text-left px-6 py-4 font-bold">Topic</th>
+                </tr>
+              </thead>
+              <tbody>
+                {curriculum.map((week, i) => (
+                  <tr key={week.week} className={i % 2 === 0 ? "bg-white" : "bg-sky-50"}>
+                    <td className="px-6 py-4">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold text-xs">
+                        W{week.week}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 font-medium text-slate-800">{week.title}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile */}
+          <div className="md:hidden space-y-3">
+            {curriculum.map((week) => (
+              <div key={week.week} className="bg-white rounded-2xl px-5 py-4 flex items-center gap-4">
+                <span className="w-10 h-10 rounded-full bg-orange-500 text-white font-bold text-sm flex items-center justify-center flex-shrink-0">
+                  W{week.week}
+                </span>
+                <span className="font-medium text-slate-800 text-sm">{week.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PORTFOLIO OUTCOMES ═══ */}
+      <section className="bg-orange-50 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <PillHeader bg="bg-pink-500" text="text-white" size="md" center>
+            💼 What You Will Build
+          </PillHeader>
+          <p className="text-center text-slate-600 mb-8 max-w-xl mx-auto">
+            By the end of 8 weeks, you will have real portfolio artifacts to show employers.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {outcomes.map((o) => (
+              <div key={o.label} className="bg-white rounded-2xl p-5 text-center shadow-sm">
+                <div className="text-3xl mb-2">{o.icon}</div>
+                <p className="text-slate-800 font-semibold text-xs leading-snug">{o.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ MEET ABDEL ═══ */}
+      <section className="bg-sky-100 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
+            👋 Meet Your Instructor
+          </PillHeader>
+          <div className="bg-white rounded-3xl p-8 max-w-3xl mx-auto shadow-sm">
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-16 h-16 rounded-full bg-teal-700 flex items-center justify-center text-2xl flex-shrink-0">
+                👤
+              </div>
+              <div>
+                <h2 className="font-extrabold text-blue-900 text-xl">{site.founder.name}</h2>
+                <p className="text-slate-500 text-sm">Healthcare IT Professional &middot; Jacksonville, FL</p>
+              </div>
+            </div>
+            <p className="text-slate-600 leading-relaxed mb-4">
+              {site.founder.bio}
             </p>
-            <p className="text-stone-500 text-sm">
+            <p className="text-xs text-slate-400">
               All course materials are original. No employer-owned documents, PHI, or proprietary vendor materials are used. Simulated workflows use synthetic data only.
             </p>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Pricing/waitlist placeholder */}
-      <section className="section-padding bg-white">
-        <Container narrow>
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-8 text-center">
-            <span className="inline-block text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">Waitlist</span>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3">Cohort 1 pricing coming soon</h2>
-            <p className="text-stone-600 mb-6">
+      {/* ═══ WAITLIST ═══ */}
+      <section className="bg-blue-900 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl p-10 max-w-2xl mx-auto text-center shadow-sm">
+            <PillHeader bg="bg-orange-500" text="text-white" size="sm" center>
+              📋 Join the Waitlist
+            </PillHeader>
+            <h2 className="font-extrabold text-blue-900 text-2xl mb-3">
+              Cohort 1 pricing coming soon
+            </h2>
+            <p className="text-slate-600 mb-6">
               Join the waitlist to be notified when enrollment opens. Waitlist members get early access and first consideration.
             </p>
             <CTAButton href="/academy/healthcare-it-roadmap" variant="primary" size="lg">
               Join the Waitlist
             </CTAButton>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section-padding bg-stone-50">
-        <Container narrow>
-          <SectionHeader eyebrow="FAQ" title="Questions about the program" />
-          <FAQ items={careerLaunchFaqs} />
-        </Container>
+      {/* ═══ FAQ ═══ */}
+      <section className="bg-orange-50 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
+              ❓ Frequently Asked Questions
+            </PillHeader>
+            <div className="bg-white rounded-3xl p-8 shadow-sm">
+              <FAQ items={careerLaunchFaqs} />
+            </div>
+          </div>
+        </div>
       </section>
 
       <FinalCTA
+        bg="bg-pink-500"
         title="Ready to build your healthcare IT foundation?"
         subtitle="Join the waitlist or download the free career roadmap to start learning today."
         primaryLabel="Join the Waitlist"

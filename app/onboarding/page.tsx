@@ -1,126 +1,89 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import FinalCTA from "@/components/FinalCTA";
-import SectionHeader from "@/components/SectionHeader";
+import PillHeader from "@/components/PillHeader";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Start With a Simple AI Automation Roadmap",
-  description:
-    "Learn how Baara onboards new clients — from a free audit to a working automation system in weeks.",
+  description: "Learn how Baara onboards new clients — from a free audit to a working automation system in weeks.",
   path: "/onboarding",
 });
 
 const steps = [
-  {
-    number: "01",
-    title: "Book Your Free Audit",
-    description:
-      "Schedule a 30-minute call. No preparation required. We come to you with questions, not a sales pitch.",
-  },
-  {
-    number: "02",
-    title: "Map Your Current Workflow",
-    description:
-      "We walk through how you currently handle leads, communication, operations, and reporting. We document exactly how things work today.",
-  },
-  {
-    number: "03",
-    title: "Identify Automation Opportunities",
-    description:
-      "We highlight which tasks can be automated, which tools can connect, and what you would gain from each change — without overpromising.",
-  },
-  {
-    number: "04",
-    title: "Build Your First Workflow",
-    description:
-      "We configure and build your first automation system. You review it, test it, and approve it before it goes live.",
-  },
-  {
-    number: "05",
-    title: "Train Your Team",
-    description:
-      "We walk through how everything works, document the setup, and make sure you can manage it going forward.",
-  },
-  {
-    number: "06",
-    title: "Review & Improve",
-    description:
-      "We check in regularly, review performance, and help you build on what is working — one workflow at a time.",
-  },
+  { n: "01", icon: "📞", title: "Book Your Free Audit", desc: "Schedule a 30-minute call. No preparation required. We come to you with questions, not a sales pitch." },
+  { n: "02", icon: "🗺️", title: "Map Your Current Workflow", desc: "We walk through how you currently handle leads, communication, operations, and reporting." },
+  { n: "03", icon: "🔍", title: "Identify Opportunities", desc: "We highlight which tasks can be automated, which tools can connect, and what you would gain — without overpromising." },
+  { n: "04", icon: "🔧", title: "Build Your First Workflow", desc: "We configure and build your first automation. You review, test, and approve before it goes live." },
+  { n: "05", icon: "🎓", title: "Train Your Team", desc: "We walk through how everything works, document the setup, and make sure you can manage it going forward." },
+  { n: "06", icon: "📈", title: "Review & Improve", desc: "We check in regularly, review performance, and help you build on what is working — one workflow at a time." },
 ];
+
+const stepColors = ["bg-orange-500", "bg-pink-500", "bg-teal-600", "bg-blue-900", "bg-indigo-600", "bg-emerald-600"];
 
 export default function OnboardingPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-stone-900 text-white py-20">
-        <Container>
-          <div className="max-w-2xl">
-            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+      <section className="bg-blue-900 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex justify-center mb-8">
+            <span className="bg-teal-600 text-white font-extrabold text-2xl px-10 py-4 rounded-full shadow-lg">
               Getting Started
             </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
-              Start With a Simple AI Automation Roadmap
-            </h1>
-            <p className="text-stone-300 text-lg leading-relaxed mb-8">
-              Working with Baara starts with a free audit and ends with a system that runs without you. Here is what to expect.
-            </p>
-            <CTAButton href="/contact" variant="primary" size="lg">
-              Book Your Free Audit
-            </CTAButton>
           </div>
-        </Container>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5">
+            Start With a Simple AI Automation Roadmap
+          </h1>
+          <p className="text-blue-200 text-lg max-w-xl mx-auto mb-8">
+            Working with Baara starts with a free audit and ends with a system that runs without you.
+          </p>
+          <CTAButton href="/contact" variant="primary" size="lg">
+            Book Your Free Audit
+          </CTAButton>
+        </div>
       </section>
 
-      {/* Steps */}
-      <section className="section-padding bg-white">
-        <Container>
-          <SectionHeader
-            eyebrow="The Baara Process"
-            title="Six steps from first call to working automation"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {steps.map((step) => (
-              <div key={step.number} className="flex gap-5">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 text-amber-700 font-extrabold text-sm flex items-center justify-center">
-                  {step.number}
+      <section className="bg-sky-100 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
+            🪜 The Baara Process
+          </PillHeader>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
+            {steps.map((step, i) => (
+              <div key={step.n} className="bg-white rounded-3xl overflow-hidden shadow-sm card-lift flex flex-col">
+                <div className={`${stepColors[i]} h-12 flex items-center px-6 gap-3`}>
+                  <span className="text-white font-extrabold">{step.n}</span>
+                  <span className="text-lg">{step.icon}</span>
                 </div>
-                <div>
-                  <h3 className="font-bold text-stone-900 mb-2">{step.title}</h3>
-                  <p className="text-stone-600 text-sm leading-relaxed">{step.description}</p>
+                <div className="p-6 flex flex-col gap-2 flex-1">
+                  <h3 className="font-extrabold text-blue-900">{step.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* What to expect */}
-      <section className="section-padding bg-stone-50">
-        <Container narrow>
-          <SectionHeader
-            eyebrow="What to Expect"
-            title="Honest about what automation can do"
-            center
-          />
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
+      <section className="bg-orange-50 py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {[
               { label: "Starter workflow", value: "1–2 weeks" },
               { label: "Growth plan setup", value: "2–4 weeks" },
               { label: "Scale project", value: "By scope" },
             ].map((item) => (
-              <div key={item.label} className="bg-white border border-stone-200 rounded-xl p-6">
-                <div className="text-2xl font-extrabold text-amber-600 mb-1">{item.value}</div>
-                <div className="text-stone-600 text-sm">{item.label}</div>
+              <div key={item.label} className="bg-white rounded-3xl p-6 text-center shadow-sm">
+                <div className="text-3xl font-extrabold text-orange-500 mb-1">{item.value}</div>
+                <div className="text-slate-600 text-sm">{item.label}</div>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
       <FinalCTA
+        bg="bg-teal-700"
         title="Let us map your automation opportunities"
         subtitle="Book a free 30-minute audit. Walk away with a clear picture of what to automate first."
         primaryLabel="Book Free Audit"
