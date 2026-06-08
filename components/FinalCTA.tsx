@@ -17,7 +17,7 @@ export default function FinalCTA({
   primaryHref = "/contact",
   secondaryLabel = "Join Baara Academy Waitlist",
   secondaryHref = "/academy/healthcare-it-career-launch",
-  bg = "bg-orange-500",
+  bg = "bg-blue-700",
 }: FinalCTAProps) {
   return (
     <section className={`${bg} py-20`}>
@@ -26,7 +26,7 @@ export default function FinalCTA({
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
             {title}
           </h2>
-          <p className="text-orange-100 text-lg mb-8 leading-relaxed">{subtitle}</p>
+          <p className="text-blue-200 text-lg mb-8 leading-relaxed">{subtitle}</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <CTAButton href={primaryHref} variant="white" size="lg">
               {primaryLabel}

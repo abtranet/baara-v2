@@ -11,11 +11,11 @@ interface CTAButtonProps {
 }
 
 const variantClasses = {
-  primary: "bg-orange-500 hover:bg-orange-600 text-white shadow-md hover:shadow-lg",
-  secondary: "bg-blue-900 hover:bg-blue-800 text-white shadow-md hover:shadow-lg",
-  outline: "border-2 border-blue-900 text-blue-900 hover:bg-blue-50",
-  white: "bg-white text-blue-900 hover:bg-orange-50 shadow-md",
-  ghost: "border-2 border-white text-white hover:bg-white hover:text-blue-900",
+  primary: "bg-blue-700 hover:bg-blue-800 text-white shadow-sm hover:shadow-md",
+  secondary: "bg-white hover:bg-slate-50 text-blue-700 shadow-sm hover:shadow-md",
+  outline: "border-2 border-blue-700 text-blue-700 hover:bg-blue-50",
+  white: "bg-white text-blue-700 hover:bg-slate-100 shadow-sm",
+  ghost: "border-2 border-white text-white hover:bg-blue-600",
 };
 
 const sizeClasses = {
@@ -32,7 +32,7 @@ export default function CTAButton({
   external,
   className = "",
 }: CTAButtonProps) {
-  const classes = `inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+  const classes = `inline-flex items-center justify-center font-semibold rounded-md transition-all duration-200 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 
   if (external) {
     return (

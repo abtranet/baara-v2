@@ -22,16 +22,16 @@ const whatToExpect = [
 export default function NewsletterPage() {
   return (
     <>
-      <section className="bg-stone-900 text-white py-20">
+      <section className="bg-blue-700 text-white py-20">
         <Container>
           <div className="max-w-2xl">
-            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Newsletter
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               Subscribe to the Baara Newsletter
             </h1>
-            <p className="text-stone-300 text-lg leading-relaxed">
+            <p className="text-blue-100 text-lg leading-relaxed">
               Practical AI news, automation tips, Academy updates, and career resources — delivered weekly in English and French.
             </p>
           </div>
@@ -42,24 +42,22 @@ export default function NewsletterPage() {
         <Container>
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-2xl font-bold text-stone-900 mb-6">What you will get each week</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">What you will get each week</h2>
               <ul className="space-y-4">
                 {whatToExpect.map((item) => (
                   <li key={item} className="flex gap-3 items-start">
-                    <span className="text-amber-600 font-bold mt-0.5">✓</span>
-                    <span className="text-stone-700">{item}</span>
+                    <span className="text-blue-600 font-bold mt-0.5">&#10003;</span>
+                    <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 bg-stone-50 border border-stone-200 rounded-xl p-5">
-                <p className="text-stone-500 text-sm">
+              <div className="mt-8 bg-indigo-50 border border-blue-100 rounded-xl p-5">
+                <p className="text-slate-500 text-sm">
                   No spam. No daily emails. Unsubscribe any time. The newsletter is free.
                 </p>
               </div>
             </div>
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              {/* TODO: Wire up to MailerLite, ConvertKit, Resend, or Airtable */}
-              {/* Currently uses a local mock success state */}
+            <div className="bg-indigo-50 border border-blue-100 rounded-2xl p-8">
               <LeadForm
                 type="newsletter"
                 title="Subscribe for free"

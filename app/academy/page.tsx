@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import FinalCTA from "@/components/FinalCTA";
-import PillHeader from "@/components/PillHeader";
+import SectionHeader from "@/components/SectionHeader";
 import Badge from "@/components/Badge";
 import { buildMetadata } from "@/lib/seo";
 import { academyTracks } from "@/lib/content/academy";
@@ -28,23 +29,21 @@ export default function AcademyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-blue-900 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center mb-8">
-            <span className="bg-pink-500 text-white font-extrabold text-2xl px-10 py-4 rounded-full shadow-lg">
+      <section className="bg-blue-700 text-white py-20">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Baara Academy
             </span>
-          </div>
-          <div className="text-center max-w-2xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5 leading-tight">
+            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               Practical Digital Skills for{" "}
-              <span className="text-orange-400">African Professionals</span>
+              <span className="text-cyan-400">African Professionals</span>
             </h1>
-            <p className="text-blue-200 text-lg leading-relaxed mb-8">
+            <p className="text-blue-100 text-lg leading-relaxed mb-8">
               Build job-ready skills in healthcare IT, AI automation, interoperability, workflow documentation, and digital career development.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <CTAButton href="/academy/healthcare-it-career-launch" variant="primary" size="lg">
+              <CTAButton href="/academy/healthcare-it-career-launch" variant="secondary" size="lg">
                 Join the Waitlist
               </CTAButton>
               <CTAButton href="/academy/healthcare-it-roadmap" variant="ghost" size="lg">
@@ -52,27 +51,22 @@ export default function AcademyPage() {
               </CTAButton>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Academy Tracks */}
-      <section className="bg-sky-100 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
-            📚 Learning Tracks
-          </PillHeader>
-          <p className="text-center text-slate-600 mb-8 max-w-xl mx-auto">
-            Six career-ready digital skill tracks for the African professional.
-          </p>
+      <section className="section-padding bg-indigo-50">
+        <Container>
+          <SectionHeader eyebrow="Learning Tracks" title="Six career-ready digital skill tracks" center />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {academyTracks.map((track) => (
               <Link
                 key={track.id}
                 href={track.href}
-                className="bg-white rounded-3xl p-6 card-lift flex flex-col gap-4 border border-slate-100"
+                className="bg-white rounded-xl p-6 flex flex-col gap-4 border border-slate-200 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-extrabold text-blue-900 leading-snug">{track.title}</h3>
+                  <h3 className="font-extrabold text-slate-900 leading-snug">{track.title}</h3>
                   <Badge
                     variant={
                       track.status === "available"
@@ -90,29 +84,27 @@ export default function AcademyPage() {
                   </Badge>
                 </div>
                 {track.status !== "coming" && (
-                  <span className="text-orange-600 text-sm font-bold">Learn more &rarr;</span>
+                  <span className="text-blue-700 text-sm font-semibold">Learn more &rarr;</span>
                 )}
               </Link>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Featured Program */}
-      <section className="bg-teal-700 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <PillHeader bg="bg-orange-500" text="text-white" size="md" center>
-            ⭐ Featured Program
-          </PillHeader>
-          <div className="bg-white rounded-3xl p-8 max-w-3xl mx-auto shadow-sm">
+      <section className="section-padding bg-white">
+        <Container>
+          <SectionHeader eyebrow="Featured Program" title="Healthcare IT Career Launch" center />
+          <div className="bg-indigo-50 rounded-xl p-8 max-w-3xl mx-auto border border-blue-100">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-3xl">🏥</span>
-              <span className="bg-pink-100 text-pink-800 font-bold text-xs px-4 py-1.5 rounded-full">
-                Healthcare IT Career Launch
+              <span className="bg-blue-100 text-blue-800 font-bold text-xs px-4 py-1.5 rounded-full">
+                8-Week Online Cohort
               </span>
             </div>
-            <h2 className="font-extrabold text-blue-900 text-2xl mb-4">
-              8-Week Practical Online Cohort for African and Diaspora Professionals
+            <h2 className="font-extrabold text-slate-900 text-2xl mb-4">
+              Practical Program for African and Diaspora Professionals
             </h2>
             <ul className="space-y-2 mb-6">
               {[
@@ -124,7 +116,7 @@ export default function AcademyPage() {
                 "Capstone project and individual career roadmap",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
-                  <span className="text-orange-500 font-bold mt-0.5">✓</span>
+                  <span className="text-blue-600 font-bold mt-0.5">&#10003;</span>
                   {item}
                 </li>
               ))}
@@ -136,49 +128,48 @@ export default function AcademyPage() {
               Join the Waitlist
             </CTAButton>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Learning approach */}
-      <section className="bg-orange-50 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
-            🧠 How We Teach
-          </PillHeader>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
+      <section className="section-padding bg-indigo-50">
+        <Container>
+          <SectionHeader eyebrow="How We Teach" title="Practical by design" center />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {learningApproach.map((item) => (
-              <div key={item.title} className="bg-white rounded-3xl p-6 shadow-sm">
-                <div className="text-2xl mb-3">{item.icon}</div>
-                <h3 className="font-extrabold text-blue-900 mb-2">{item.title}</h3>
+              <div key={item.title} className="bg-white rounded-xl p-6 border border-slate-200 hover:shadow-sm transition-shadow">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-slate-600 text-sm">{item.description}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Founder credibility */}
-      <section className="bg-sky-100 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="bg-blue-900 rounded-3xl p-10 max-w-3xl mx-auto text-center text-white">
-            <PillHeader bg="bg-pink-500" text="text-white" size="sm" center>
-              👋 Who Built This
-            </PillHeader>
+      <section className="section-padding bg-white">
+        <Container narrow>
+          <div className="bg-blue-700 rounded-xl p-10 text-center text-white">
+            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
+              Who Built This
+            </span>
             <h2 className="font-extrabold text-2xl mb-4">
               Taught by a healthcare IT practitioner
             </h2>
             <p className="text-blue-200 leading-relaxed mb-3">
               Baara Academy is built by <strong className="text-white">{site.founder.name}</strong>, a {site.founder.bio}
             </p>
-            <p className="text-blue-400 text-sm">
+            <p className="text-blue-300 text-sm">
               All materials are original. No employer-owned documents, PHI, or proprietary vendor materials are used.
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       <FinalCTA
-        bg="bg-pink-500"
         title="Ready to build healthcare IT or digital skills?"
         subtitle="Join the waitlist or download the free career roadmap to start learning today."
         primaryLabel="Join the Waitlist"

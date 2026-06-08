@@ -68,16 +68,16 @@ const values = [
 export default function CommunautePage() {
   return (
     <>
-      <section className="bg-stone-900 text-white py-20">
+      <section className="bg-blue-700 text-white py-20">
         <Container>
           <div className="max-w-2xl">
-            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+            <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Communauté / Community
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               Join the Baara Community
             </h1>
-            <p className="text-stone-300 text-xl leading-relaxed">
+            <p className="text-blue-100 text-xl leading-relaxed">
               A bilingual, Pan-African community for AI automation, digital skills, healthcare IT career growth, and business automation.
             </p>
           </div>
@@ -90,10 +90,12 @@ export default function CommunautePage() {
           <SectionHeader eyebrow="Community Values" title="What this community is about" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="bg-stone-50 border border-stone-200 rounded-xl p-6">
-                <div className="text-2xl mb-3">{v.icon}</div>
-                <h3 className="font-bold text-stone-900 mb-2">{v.title}</h3>
-                <p className="text-stone-600 text-sm">{v.description}</p>
+              <div key={v.title} className="bg-indigo-50 border border-blue-100 rounded-xl p-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl mb-3">
+                  {v.icon}
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2">{v.title}</h3>
+                <p className="text-slate-600 text-sm">{v.description}</p>
               </div>
             ))}
           </div>
@@ -101,7 +103,7 @@ export default function CommunautePage() {
       </section>
 
       {/* Channels */}
-      <section className="section-padding bg-stone-50">
+      <section className="section-padding bg-indigo-50">
         <Container>
           <SectionHeader
             eyebrow="Where to Find Us"
@@ -112,12 +114,14 @@ export default function CommunautePage() {
             {channels.map((channel) => (
               <div
                 key={channel.name}
-                className="bg-white border border-stone-200 rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow"
+                className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow"
               >
-                <div className="text-3xl">{channel.icon}</div>
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">
+                  {channel.icon}
+                </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-stone-900 mb-2">{channel.name}</h3>
-                  <p className="text-stone-600 text-sm leading-relaxed">{channel.description}</p>
+                  <h3 className="font-bold text-slate-900 mb-2">{channel.name}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{channel.description}</p>
                 </div>
                 <CTAButton
                   href={channel.href}

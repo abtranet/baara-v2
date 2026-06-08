@@ -9,15 +9,15 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-stone-200">
+    <header className="sticky top-0 z-50 bg-blue-700 shadow-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-2xl font-extrabold text-stone-900 tracking-tight group-hover:text-amber-600 transition-colors">
+            <span className="text-2xl font-extrabold text-white tracking-tight">
               Baara
             </span>
-            <span className="hidden sm:block text-xs text-stone-400 font-medium border-l border-stone-200 pl-2 leading-tight">
+            <span className="hidden sm:block text-xs text-blue-300 font-medium border-l border-blue-500 pl-2 leading-tight">
               AI + Skills
             </span>
           </Link>
@@ -28,7 +28,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-stone-600 hover:text-amber-700 font-medium px-3 py-2 rounded-md hover:bg-amber-50 transition-colors"
+                className="text-sm text-blue-100 hover:text-white font-medium px-3 py-2 rounded-md hover:bg-blue-600 transition-colors"
               >
                 {link.label}
               </Link>
@@ -37,24 +37,23 @@ export default function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            {/* Language toggle — TODO: wire up full i18n with next-intl */}
             <button
               aria-label="Toggle language"
-              className="hidden sm:flex items-center gap-1 text-xs font-semibold text-stone-500 hover:text-amber-600 border border-stone-200 rounded-md px-2 py-1.5 transition-colors"
+              className="hidden sm:flex items-center gap-1 text-xs font-semibold text-blue-200 hover:text-white border border-blue-500 rounded-md px-2 py-1.5 transition-colors"
               title="Language toggle — full i18n coming soon"
             >
               <span>EN</span>
-              <span className="text-stone-300">/</span>
+              <span className="text-blue-400">/</span>
               <span>FR</span>
             </button>
 
-            <CTAButton href="/contact" variant="primary" size="sm" className="hidden sm:inline-flex">
+            <CTAButton href="/contact" variant="secondary" size="sm" className="hidden sm:inline-flex">
               Free Audit
             </CTAButton>
 
             {/* Mobile menu toggle */}
             <button
-              className="lg:hidden p-2 text-stone-700 hover:text-amber-600"
+              className="lg:hidden p-2 text-blue-100 hover:text-white"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen(!menuOpen)}
             >
@@ -74,20 +73,20 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-stone-200 px-4 py-4">
+        <div className="lg:hidden bg-blue-800 border-t border-blue-600 px-4 py-4">
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-stone-700 hover:text-amber-700 font-medium py-2.5 px-3 rounded-lg hover:bg-amber-50 transition-colors"
+                className="text-blue-100 hover:text-white font-medium py-2.5 px-3 rounded-lg hover:bg-blue-700 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-3 pt-3 border-t border-stone-100 flex gap-3">
-              <CTAButton href="/contact" variant="primary" size="sm" className="flex-1 justify-center">
+            <div className="mt-3 pt-3 border-t border-blue-700 flex gap-3">
+              <CTAButton href="/contact" variant="secondary" size="sm" className="flex-1 justify-center">
                 Book Free Audit
               </CTAButton>
             </div>

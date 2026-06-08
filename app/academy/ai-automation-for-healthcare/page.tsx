@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Container from "@/components/Container";
 import LeadForm from "@/components/LeadForm";
-import PillHeader from "@/components/PillHeader";
+import SectionHeader from "@/components/SectionHeader";
 import Badge from "@/components/Badge";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
@@ -26,59 +27,54 @@ const topics = [
 export default function AIAutomationForHealthcarePage() {
   return (
     <>
-      <section className="bg-blue-900 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-blue-700 text-white py-20">
+        <Container>
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Academy", href: "/academy" }, { label: "AI Automation for Healthcare" }]} />
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <span className="bg-indigo-600 text-white font-extrabold text-xl px-8 py-3.5 rounded-full shadow-lg">
-              Baara Academy
-            </span>
-            <Badge variant="amber">Waitlist Open</Badge>
-          </div>
-          <div className="text-center max-w-2xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5">
+          <div className="text-center max-w-2xl mx-auto mt-6">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="inline-block text-cyan-400 font-semibold text-sm uppercase tracking-widest">
+                Baara Academy
+              </span>
+              <Badge variant="amber">Waitlist Open</Badge>
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
               AI Automation for Healthcare
               <br />
-              <span className="text-orange-400">and Business Workflows</span>
+              <span className="text-cyan-400">and Business Workflows</span>
             </h1>
-            <p className="text-blue-200 text-lg leading-relaxed">
+            <p className="text-blue-100 text-lg leading-relaxed">
               Practical AI productivity and no-code automation for healthcare professionals, IT teams, and business operators who want to work smarter — responsibly.
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-sky-100 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-white">
+        <Container>
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
-              <PillHeader bg="bg-indigo-600" text="text-white" size="md">
-                🤖 Course Topics
-              </PillHeader>
+              <SectionHeader eyebrow="Course Topics" title="What this course covers" />
               <div className="space-y-3">
                 {topics.map((topic) => (
-                  <div key={topic} className="bg-white rounded-2xl px-5 py-4 flex items-start gap-3 shadow-sm">
-                    <span className="text-orange-500 font-bold mt-0.5 flex-shrink-0">✓</span>
+                  <div key={topic} className="bg-indigo-50 rounded-xl px-5 py-4 flex items-start gap-3 border border-blue-100">
+                    <span className="text-blue-600 font-bold mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-slate-700 text-sm">{topic}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-5 bg-amber-50 border border-amber-200 rounded-2xl p-4">
+              <div className="mt-5 bg-amber-50 border border-amber-200 rounded-xl p-4">
                 <p className="text-amber-900 text-sm font-semibold mb-1">A note on responsible AI</p>
                 <p className="text-amber-800 text-sm">
                   This course covers HIPAA awareness and responsible AI boundaries. We do not provide official HIPAA certification. The course focuses on non-PHI use cases and safe automation practices.
                 </p>
               </div>
             </div>
-            <div className="bg-white rounded-3xl p-8 shadow-sm">
-              <PillHeader bg="bg-indigo-600" text="text-white" size="sm">
-                📋 Join the Waitlist
-              </PillHeader>
-              {/* TODO: Wire up to email integration */}
+            <div className="bg-indigo-50 rounded-xl p-8 border border-blue-100">
+              <SectionHeader eyebrow="Join the Waitlist" title="Be notified when this opens" />
               <LeadForm type="waitlist" title="Be notified when this course opens." showCountry showLanguage />
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );
