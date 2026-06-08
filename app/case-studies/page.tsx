@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import FinalCTA from "@/components/FinalCTA";
-import PillHeader from "@/components/PillHeader";
+import SectionHeader from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
 import { caseStudies } from "@/lib/content/caseStudies";
 
@@ -12,76 +13,79 @@ export const metadata: Metadata = buildMetadata({
   path: "/case-studies",
 });
 
-const caseColors = ["bg-orange-500", "bg-teal-600", "bg-blue-900"];
-
 export default function CaseStudiesPage() {
   return (
     <>
-      <section className="bg-blue-900 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex justify-center mb-8">
-            <span className="bg-teal-600 text-white font-extrabold text-2xl px-10 py-4 rounded-full shadow-lg">
+      <section className="bg-stone-900 text-white py-20">
+        <Container>
+          <div className="max-w-2xl">
+            <span className="inline-block text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Case Studies
             </span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 leading-tight">
+              Practical AI Automation Case Studies
+            </h1>
+            <p className="text-stone-300 text-lg leading-relaxed">
+              These are representative automation scenarios showing how Baara approaches common business problems. They are not guaranteed results — every workflow is different.
+            </p>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5">
-            Practical AI Automation Case Studies
-          </h1>
-          <p className="text-blue-200 text-lg max-w-2xl mx-auto">
-            Representative automation scenarios showing how Baara approaches common business problems. Not guaranteed results — every workflow is different.
-          </p>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-sky-100 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <PillHeader bg="bg-blue-900" text="text-white" size="md" center>
-            📋 Sample Scenarios
-          </PillHeader>
-          <div className="space-y-8 mt-4">
-            {caseStudies.map((cs, i) => (
-              <div key={cs.id} className="bg-white rounded-3xl overflow-hidden shadow-sm">
-                <div className={`${caseColors[i % caseColors.length]} px-8 py-5 flex items-center gap-4`}>
-                  <span className="bg-white text-slate-700 font-bold text-xs px-4 py-1.5 rounded-full">
+      <section className="section-padding bg-white">
+        <Container>
+          <SectionHeader
+            eyebrow="Sample Scenarios"
+            title="How Baara designs automation workflows"
+            subtitle="Each scenario below represents a realistic automation approach. Results depend on your tools, team, and data quality."
+          />
+          <div className="space-y-12">
+            {caseStudies.map((cs) => (
+              <div
+                key={cs.id}
+                className="bg-stone-50 border border-stone-200 rounded-2xl p-8"
+              >
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
                     {cs.label}
                   </span>
-                  <h2 className="text-white font-extrabold text-xl">{cs.industry}</h2>
+                  <h2 className="text-xl font-bold text-stone-900">{cs.industry}</h2>
                 </div>
-                <div className="p-8 grid md:grid-cols-2 gap-8">
-                  <div className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
                     <div>
-                      <span className="text-xs font-bold text-orange-600 uppercase tracking-widest">Challenge</span>
-                      <p className="text-slate-700 mt-1 text-sm leading-relaxed">{cs.challenge}</p>
+                      <span className="text-xs font-semibold text-amber-600 uppercase tracking-widest">Challenge</span>
+                      <p className="text-stone-700 mt-1 text-sm leading-relaxed">{cs.challenge}</p>
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-orange-600 uppercase tracking-widest">Workflow designed</span>
-                      <p className="text-slate-700 mt-1 text-sm leading-relaxed">{cs.workflow}</p>
+                      <span className="text-xs font-semibold text-amber-600 uppercase tracking-widest">Workflow designed</span>
+                      <p className="text-stone-700 mt-1 text-sm leading-relaxed">{cs.workflow}</p>
                     </div>
                   </div>
-                  <div className="space-y-5">
+                  <div className="space-y-4">
                     <div>
-                      <span className="text-xs font-bold text-orange-600 uppercase tracking-widest">Tools involved</span>
-                      <p className="text-slate-500 mt-1 text-sm">{cs.tools.join(", ")}</p>
+                      <span className="text-xs font-semibold text-amber-600 uppercase tracking-widest">Tools involved</span>
+                      <p className="text-stone-500 mt-1 text-sm">{cs.tools.join(", ")}</p>
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-orange-600 uppercase tracking-widest">Practical outcome</span>
-                      <p className="text-slate-700 mt-1 text-sm leading-relaxed">{cs.outcome}</p>
+                      <span className="text-xs font-semibold text-amber-600 uppercase tracking-widest">Practical outcome</span>
+                      <p className="text-stone-700 mt-1 text-sm leading-relaxed">{cs.outcome}</p>
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-orange-600 uppercase tracking-widest">Next improvement</span>
-                      <p className="text-slate-400 mt-1 text-sm italic">{cs.next}</p>
+                      <span className="text-xs font-semibold text-amber-600 uppercase tracking-widest">Next improvement</span>
+                      <p className="text-stone-500 mt-1 text-sm italic">{cs.next}</p>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-10 text-center">
-            <CTAButton href="/contact" variant="secondary" size="lg">
+          <div className="mt-12 text-center">
+            <CTAButton href="/contact" variant="primary" size="lg">
               See What We Can Build for You
             </CTAButton>
           </div>
-        </div>
+        </Container>
       </section>
 
       <FinalCTA />
