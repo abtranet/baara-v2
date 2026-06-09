@@ -14,6 +14,51 @@ It does not connect to, share code with, or modify the current Baara.us reposito
 
 ---
 
+## GitHub Actions setup
+
+Automate GitHub Actions permissions and secrets without touching the GitHub UI.
+
+### One-time setup
+
+```bash
+bash scripts/setup-github-agent.sh
+```
+
+What it does:
+- Checks that [GitHub CLI](https://cli.github.com) (`gh`) is installed and authenticated
+- Detects your GitHub repo automatically
+- Sets default workflow permissions to **write** and enables PR approval
+- Prompts you to paste your `OPENAI_API_KEY` (stored securely, never printed)
+- Optionally stores `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `RESEND_API_KEY`, `FORM_NOTIFICATION_EMAIL`, and `FORM_FROM_EMAIL`
+- Verifies that the required workflow files exist
+
+Prerequisites:
+
+```bash
+# Install GitHub CLI if you don't have it
+brew install gh          # macOS
+
+# Log in
+gh auth login
+```
+
+### Check setup status
+
+Run this anytime to see what is configured and what is missing:
+
+```bash
+bash scripts/check-agent-setup.sh
+```
+
+Prints a report showing:
+- Origin remote ✔/✖
+- GitHub CLI auth ✔/✖
+- Workflow files present ✔/✖
+- Which secrets are set (names only — values are never shown)
+- Workflow permission level
+
+---
+
 ## Running locally
 
 ```bash
