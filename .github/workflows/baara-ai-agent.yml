@@ -1,0 +1,112 @@
+name: Baara AI Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "What should the AI agent audit, fix, or implement?"
+        required: true
+        type: string
+      mode:
+        description: "Choose audit-only or implement"
+        required: true
+        default: "audit-only"
+        type: choice
+        options:
+          - audit-only
+          - implement
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  ai-agent:
+    name: AI Agent Task
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run baseline checks
+        continue-on-error: true
+        run: |
+          npm run lint
+          npm run build
+
+      - name: Run Codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt: |
+            You are a senior Next.js full-stack engineer working on the Baara v2 repo.
+
+            User task:
+            ${{ inputs.task }}
+
+            Mode:
+            ${{ inputs.mode }}
+
+            Important behavior:
+            - First inspect the repo.
+            - If mode is audit-only, do not modify files. Produce a clear technical audit only.
+            - If mode is implement, make the smallest safe changes needed.
+            - Preserve existing routes, metadata, sitemap, robots, redirects, and NEXT_PUBLIC_INDEXING=false default.
+            - Do not expose secrets to the browser.
+            - Do not create an unprotected admin dashboard.
+            - Do not make SEO-critical content client-only.
+            - Run npm run lint and npm run build after changes.
+            - Fix all TypeScript, lint, and build errors caused by your changes.
+            - Summarize what you changed.
+
+            Baara context:
+            Baara is an AI automation and digital skills site for African entrepreneurs, African professionals, African diaspora learners, small businesses, and Baara Academy.
+
+            Compliance constraints:
+            - Do not claim official Epic, Varian, Elekta, ARIA, MOSAIQ, Oracle Health, or vendor certifications.
+            - Do not promise jobs, salaries, employment, revenue growth, or guaranteed outcomes.
+            - Do not use PHI, employer-owned screenshots, confidential data, or proprietary healthcare system materials.
+            - Use original content, simulated workflows, and vendor-neutral language.
+
+            If this task involves forms:
+            - Store form submissions securely.
+            - Validate inputs server-side.
+            - Include honeypot spam protection.
+            - Do not ask users to submit PHI, confidential employer data, passwords, API keys, or screenshots.
+            - If using Supabase, keep service role key server-side only.
+            - If using Resend, keep API key server-side only.
+
+      - name: Create pull request
+        if: ${{ inputs.mode == 'implement' }}
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "AI agent update"
+          branch: agent/baara-ai-agent-update
+          title: "AI Agent Update: ${{ inputs.task }}"
+          body: |
+            Automated AI agent update for Baara v2.
+
+            Task:
+            ${{ inputs.task }}
+
+            Review before merging.
+
+            Checklist:
+            - [ ] Lint passes
+            - [ ] Build passes
+            - [ ] No secrets exposed
+            - [ ] NEXT_PUBLIC_INDEXING remains false by default
+            - [ ] No unprotected admin data exposed
+            - [ ] No vendor-certification claims
+            - [ ] No job/revenue guarantees
