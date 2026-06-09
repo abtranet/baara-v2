@@ -74,7 +74,6 @@ export default function AIAutomationForHealthcarePage() {
               <PillHeader bg="bg-indigo-600" text="text-white" size="sm">
                 📋 Join the Waitlist
               </PillHeader>
-              {/* TODO: Wire up to email integration */}
               <LeadForm type="waitlist" title="Be notified when this course opens." showCountry showLanguage />
             </div>
           </div>

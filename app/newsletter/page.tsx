@@ -58,8 +58,6 @@ export default function NewsletterPage() {
               </div>
             </div>
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              {/* TODO: Wire up to MailerLite, ConvertKit, Resend, or Airtable */}
-              {/* Currently uses a local mock success state */}
               <LeadForm
                 type="newsletter"
                 title="Subscribe for free"

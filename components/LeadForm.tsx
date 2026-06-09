@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 type FormType = "audit" | "waitlist" | "roadmap" | "newsletter" | "contact";
 
@@ -17,9 +18,6 @@ interface LeadFormProps {
 const backgrounds = ["Healthcare", "IT", "Admin", "Student", "Career changer", "Other"];
 const languages = ["English", "French", "Both"];
 
-// TODO: Wire up to real backend. Options: Resend, ConvertKit, MailerLite, Supabase, Airtable, Tally
-// Currently uses a local mock success state — no data is stored or sent
-
 export default function LeadForm({
   type,
   title,
@@ -29,17 +27,38 @@ export default function LeadForm({
   showLanguage,
   showMessage,
 }: LeadFormProps) {
+  const pathname = usePathname();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // TODO: Replace with real API call (Resend / ConvertKit / MailerLite / Supabase)
-    setTimeout(() => {
-      setLoading(false);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    formData.set("type", type);
+    formData.set("sourcePath", pathname || "");
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        body: formData,
+      });
+      const result = (await response.json()) as { ok?: boolean; error?: string };
+
+      if (!response.ok || !result.ok) {
+        setError(result.error || "We could not submit the form right now. Please try again.");
+        return;
+      }
+
       setSubmitted(true);
-    }, 800);
+    } catch {
+      setError("We could not submit the form right now. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -60,6 +79,19 @@ export default function LeadForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      <input type="hidden" name="type" value={type} />
+      <input type="hidden" name="sourcePath" value={pathname || ""} />
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor={`${type}-companyWebsite`}>Company website</label>
+        <input
+          id={`${type}-companyWebsite`}
+          type="text"
+          name="companyWebsite"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {(title || subtitle) && (
         <div className="mb-6">
           {title && <h3 className="text-xl font-bold text-stone-900">{title}</h3>}
@@ -161,9 +193,16 @@ export default function LeadForm({
             className="w-full border border-stone-300 rounded-lg px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
             placeholder="Tell us about your business or what you're looking for."
           />
-          <p className="text-xs text-stone-400 mt-1">
-            Do not submit PHI, confidential employer data, passwords, API keys, or sensitive client data.
-          </p>
+        </div>
+      )}
+
+      <p className="text-xs text-stone-400">
+        Do not submit PHI, confidential employer data, passwords, API keys, or sensitive client data.
+      </p>
+
+      {error && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+          {error}
         </div>
       )}
 

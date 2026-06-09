@@ -74,14 +74,37 @@ NEXT_PUBLIC_INSTAGRAM_URL=          # Instagram profile URL
 NEXT_PUBLIC_TIKTOK_URL=             # TikTok profile URL
 NEXT_PUBLIC_X_URL=                  # X/Twitter profile URL
 CONTACT_EMAIL=sales@globalsabt.com  # Contact email displayed in footer and contact page
-RESEND_API_KEY=                     # For transactional email (form submissions)
-CONVERTKIT_API_KEY=                 # For newsletter and waitlist signups
-MAILERLITE_API_KEY=                 # Alternative to ConvertKit
-AIRTABLE_API_KEY=                   # For form data storage
-AIRTABLE_BASE_ID=                   # Your Airtable base ID
-SUPABASE_URL=                       # For serverless form backend
-SUPABASE_ANON_KEY=                  # Supabase public anon key
+SUPABASE_URL=                       # Server-only Supabase project URL
+SUPABASE_SERVICE_ROLE_KEY=          # Server-only service role key; never expose in the browser
+SUPABASE_LEADS_TABLE=leads          # Supabase table for form submissions
+RESEND_API_KEY=                     # Server-only Resend API key for form notifications
+RESEND_FROM=                        # Verified sender, e.g. Baara <hello@baara.us>
+LEAD_NOTIFICATION_TO=sales@globalsabt.com
 ```
+
+Do not prefix Supabase service role or Resend API keys with `NEXT_PUBLIC_`. They are used only by the `/api/leads` route handler.
+
+Create the Supabase table before enabling forms:
+
+```sql
+create table if not exists public.leads (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  form_type text not null check (form_type in ('audit', 'waitlist', 'roadmap', 'newsletter', 'contact')),
+  first_name text not null,
+  email text not null,
+  country text,
+  background text,
+  language text,
+  message text,
+  source_path text,
+  metadata jsonb not null default '{}'::jsonb
+);
+
+alter table public.leads enable row level security;
+```
+
+The app inserts leads with the server-side service role key. Do not add public client insert policies unless you intentionally build a separate protected flow.
 
 ---
 
@@ -164,17 +187,11 @@ Redirects defined in `next.config.ts`:
 
 ---
 
-## Form integration TODOs
+## Form integration
 
-All forms currently use a **local mock success state**. No data is stored or sent in this state. Before going live, wire up at least one integration:
+All forms submit to `/api/leads`, which validates inputs server-side, ignores honeypot spam submissions, stores valid leads in Supabase, and sends a Resend notification email to `LEAD_NOTIFICATION_TO` (`sales@globalsabt.com` by default).
 
-- **Resend** — transactional email for contact form
-- **ConvertKit** or **MailerLite** — newsletter and waitlist signups
-- **Airtable** — flexible data storage for all form types
-- **Supabase** — serverless backend alternative
-- **Tally** — hosted form alternative (replace LeadForm component)
-
-Forms that need backend wiring:
+Forms using this backend:
 - `app/contact/page.tsx` — contact form
 - `app/newsletter/page.tsx` — newsletter signup
 - `app/academy/healthcare-it-roadmap/page.tsx` — roadmap lead magnet

@@ -77,7 +77,6 @@ export default function HealthcareITRoadmapPage() {
               <PillHeader bg="bg-orange-500" text="text-white" size="sm">
                 🗺️ Get the Free Roadmap
               </PillHeader>
-              {/* TODO: Wire up to ConvertKit, MailerLite, Resend, Airtable, or Tally */}
               <LeadForm type="roadmap" showCountry showBackground showLanguage />
             </div>
           </div>

@@ -36,8 +36,6 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Contact form */}
             <div>
-              {/* TODO: Wire up to Resend, Airtable, or Supabase for real form submission */}
-              {/* Currently mocks a local success state — no data is stored or sent */}
               <LeadForm
                 type="contact"
                 title="Send a message"
