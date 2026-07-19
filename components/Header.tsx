@@ -48,8 +48,8 @@ export default function Header() {
               <span>FR</span>
             </button>
 
-            <CTAButton href="/contact" variant="primary" size="sm" className="hidden sm:inline-flex">
-              Free Audit
+            <CTAButton href="https://start.baara.us" external variant="primary" size="sm" className="hidden sm:inline-flex">
+              Start Your Project
             </CTAButton>
 
             {/* Mobile menu toggle */}
@@ -87,8 +87,8 @@ export default function Header() {
               </Link>
             ))}
             <div className="mt-3 pt-3 border-t border-stone-100 flex gap-3">
-              <CTAButton href="/contact" variant="primary" size="sm" className="flex-1 justify-center">
-                Book Free Audit
+              <CTAButton href="https://start.baara.us" external variant="primary" size="sm" className="flex-1 justify-center">
+                Start Your Project
               </CTAButton>
             </div>
           </nav>
