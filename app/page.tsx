@@ -101,8 +101,8 @@ export default function HomePage() {
               build future-ready digital careers.
             </p>
             <div className="flex flex-wrap gap-4">
-              <CTAButton href="/contact" variant="primary" size="lg">
-                Get a Free AI Automation Audit
+              <CTAButton href="https://start.baara.us" external variant="primary" size="lg">
+                Start Your Digital Project
               </CTAButton>
               <CTAButton
                 href="/academy"
