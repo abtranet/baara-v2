@@ -13,8 +13,8 @@ interface FinalCTAProps {
 export default function FinalCTA({
   title = "Ready to build better work with AI and practical digital skills?",
   subtitle = "Book a free AI automation audit or join the Baara Academy waitlist.",
-  primaryLabel = "Book a Free AI Audit",
-  primaryHref = "/contact",
+  primaryLabel = "Start Your Project",
+  primaryHref = "https://start.baara.us",
   secondaryLabel = "Join Baara Academy Waitlist",
   secondaryHref = "/academy/healthcare-it-career-launch",
   bg = "bg-orange-500",
@@ -28,7 +28,7 @@ export default function FinalCTA({
           </h2>
           <p className="text-orange-100 text-lg mb-8 leading-relaxed">{subtitle}</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <CTAButton href={primaryHref} variant="white" size="lg">
+            <CTAButton href={primaryHref} external={primaryHref.startsWith("http")} variant="white" size="lg">
               {primaryLabel}
             </CTAButton>
             <CTAButton href={secondaryHref} variant="ghost" size="lg">
